@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Service Worker Example</title>
+	<link rel="stylesheet" type="text/css" href="css/app.css">
+</head>
+<body>
+
+	<h1>Simple Service Worker Example</h1>
+	<p>How does the service worker lifecycle work?</p>
+	<img src="img/lord-of-the-rings.jpg">
+	<p>Sauron, the Dark Lord, has gathered to him the Rings of Power - the means by which he will be able to rule the world. All he lacks in his plan for dominion is the Ruling Ring, which has fallen into the hands of the hobbit Bilbo Baggins. Young Frodo Baggins is entrusted to foil the Dark Lord´s plan.</p>
+	<img src="img/the-ring.jpg">
+	<button onclick="displayNotification();">Test Notification</button>
+	<button onclick="subscribeUser();">Test Subscription</button>
+
+
+	<script type="text/javascript">
+		// Check if service worker is enabled in browser,
+		// register it and log the result to the console.
+		if ('serviceWorker' in navigator) {
+		  navigator.serviceWorker.register('/service-worker.js',  { scope: '/' })
+		  .then(function(registration) {
+		    console.log('[Service Worker] Registration successful, scope is:', registration.scope);
+			
+			// registration of push API
+
+
+		    registration.pushManager.getSubscription().then(function(sub) {
+		      if (sub === null) {
+		        // Update UI to ask user to register for Push
+		        console.log('Not subscribed to push service!');
+		      } else {
+		        // We have a subscription, update the database/system
+		        console.log('Subscription object: ', sub);
+		      }
+		    });
+
+		  })
+		  .catch(function(error) {
+		    console.log('[Service worker] Registration failed, error:', error);
+		  });
+		}
+
+	</script>
+	<script type="text/javascript" src="js/app.js"></script>
+
+</body>
+</html>
