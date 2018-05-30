@@ -23,10 +23,7 @@
 		  navigator.serviceWorker.register('/service-worker.js',  { scope: '/' })
 		  .then(function(registration) {
 		    console.log('[Service Worker] Registration successful, scope is:', registration.scope);
-			
 			// registration of push API
-
-
 		    registration.pushManager.getSubscription().then(function(sub) {
 		      if (sub === null) {
 		        // Update UI to ask user to register for Push
@@ -36,7 +33,6 @@
 		        console.log('Subscription object: ', sub);
 		      }
 		    });
-
 		  })
 		  .catch(function(error) {
 		    console.log('[Service worker] Registration failed, error:', error);

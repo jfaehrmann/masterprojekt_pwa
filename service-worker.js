@@ -67,8 +67,7 @@ self.addEventListener('notificationclick', function(e) {
   }
 });
 
-
-
+// Example of how to push with Service Worker
 self.addEventListener('push', function(e) {
   var options = {
     body: 'This notification was generated from a push!',

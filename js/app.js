@@ -28,6 +28,7 @@ function displayNotification() {
   }
 }
 
+// Subscribe User
 function subscribeUser() {
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker.ready.then(function(registration) {
